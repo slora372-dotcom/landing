@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>YOURBRAND</title>
+  <meta name="description" content="YOURBRAND — edit this description in index.html.">
+  <meta name="theme-color" content="#0b2a7a">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <a class="logo" href="./" id="logo"></a>
+      <a class="partner" id="partner"></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="menu" id="menu" hidden></nav>
+
+    <div class="marquee" aria-label="Announcement"><span id="marquee"></span></div>
+
+    <section class="carousel" aria-label="Promotions">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <ul class="trust" id="trust"></ul>
+    <div class="pay-strip" id="payStrip"></div>
+
+    <div class="auth-row">
+      <a class="btn btn-red btn-lg" data-link="login">LOGIN <span class="btn-ico">👤</span></a>
+      <a class="btn btn-blue btn-lg" data-link="register"><span class="btn-ico">📝</span> REGISTER</a>
+    </div>
+
+    <section class="wallet">
+      <div class="wallet-info">
+        <p class="wallet-label">Balance:</p>
+        <p class="wallet-amount" id="balance"></p>
+        <p>Minimum Deposit: <b id="minDeposit"></b></p>
+        <p>Minimum Withdrawal: <b id="minWithdrawal"></b></p>
+      </div>
+      <div class="wallet-actions">
+        <a class="btn btn-red" data-link="deposit">⬆ DEPOSIT</a>
+        <a class="btn btn-silver" data-link="withdraw">⬇ WITHDRAW</a>
+        <button class="btn btn-silver" id="refreshBtn">⟳ REFRESH</button>
+      </div>
+    </section>
+
+    <section class="referral">
+      <div class="referral-banner" id="referralBanner"></div>
+      <div class="referral-actions">
+        <button class="btn btn-red" id="shareBtn">➤ SHARE</button>
+        <a class="btn btn-silver" data-link="downlineChart">👥 DOWNLINE CHART</a>
+        <button class="btn btn-silver" id="copyBtn">📋 COPY REFERRAL LINK</button>
+        <a class="btn btn-silver" data-link="freeBot">🤖 FREE BOT</a>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title red"><span class="top-badge">TOP</span> HOT GAMES</h2>
+      <div class="hscroll" id="hotGames"></div>
+    </section>
+
+    <section class="block">
+      <div class="tabs-wrap">
+        <button class="tabs-arrow" id="tabsPrev" aria-label="Previous categories">‹</button>
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <button class="tabs-arrow" id="tabsNext" aria-label="Next categories">›</button>
+      </div>
+      <div class="game-grid" id="games"></div>
+    </section>
+
+    <footer class="footer">
+      <h3>WE ACCEPT</h3>
+      <div class="chips" id="payments"></div>
+
+      <div class="footer-row">
+        <div>
+          <h3>FOLLOW US</h3>
+          <div class="chips" id="socials"></div>
+        </div>
+        <div>
+          <h3>OUR APP</h3>
+          <div class="app-btns">
+            <a class="app-btn android" data-link="androidApp" aria-label="Android app">🤖</a>
+            <a class="app-btn ios" data-link="iosApp" aria-label="iOS app">🍎</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="other-site">VISIT OUR OTHER OFFICIAL WEBSITE:<br><a id="otherSite"></a></p>
+      <a class="btn-pill" data-link="readMore">Read More</a>
+      <p class="footer-note" id="footerNote"></p>
+    </footer>
+  </div>
+
+  <aside class="side-tabs">
+    <a class="side-tab save" data-link="saveLinks">🔗 SAVE LINKS</a>
+    <a class="side-tab gold" data-link="partnership">PARTNERSHIP ★★★★</a>
+  </aside>
+
+  <nav class="bottom-nav">
+    <a class="active" href="./"><i>🏠</i>HOME</a>
+    <a data-link="history"><i>🧾</i>HISTORY</a>
+    <a class="bonus" data-link="bonus"><i>💵<b class="badge">1</b></i>BONUS</a>
+    <a data-link="liveChat"><i>💬<b class="badge">1</b></i>LIVE CHAT</a>
+    <a data-link="settings"><i>⚙️</i>SETTING</a>
+  </nav>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
