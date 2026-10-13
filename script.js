@@ -6,28 +6,18 @@
   const img = (src, alt) => (src ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">` : "");
 
   // ---------- Brand ----------
-  document.title = S.brand.name;
   $("logo").innerHTML = S.brand.logo
     ? img(S.brand.logo, S.brand.name)
     : `<strong>${esc(S.brand.name)}</strong><small>${esc(S.brand.tagline)}</small>`;
   $("partner").href = S.brand.partner.url;
-  $("partner").innerHTML = `<strong>${esc(S.brand.partner.name)}</strong><small>${esc(S.brand.partner.label)}</small>`;
+  $("partner").innerHTML = S.brand.partner.img
+    ? img(S.brand.partner.img, S.brand.partner.name)
+    : `<strong>${esc(S.brand.partner.name)}</strong><small>${esc(S.brand.partner.label)}</small>`;
   $("marquee").textContent = S.announcement;
   $("footerNote").textContent = S.footerNote;
-  $("otherSite").textContent = S.links.otherSite.label;
-  $("otherSite").href = S.links.otherSite.url;
 
   document.querySelectorAll("[data-link]").forEach((el) => {
     el.href = S.links[el.dataset.link] || "#";
-  });
-
-  // ---------- Menu ----------
-  const menuItems = [["Login", "login"], ["Register", "register"], ["Deposit", "deposit"], ["Withdraw", "withdraw"], ["Bonus", "bonus"], ["Live Chat", "liveChat"]];
-  $("menu").innerHTML = menuItems.map(([label, key]) => `<a href="${esc(S.links[key] || "#")}">${label}</a>`).join("");
-  $("menuBtn").addEventListener("click", () => {
-    const open = $("menu").hidden;
-    $("menu").hidden = !open;
-    $("menuBtn").setAttribute("aria-expanded", String(open));
   });
 
   // ---------- Carousel ----------
@@ -60,10 +50,14 @@
 
   // ---------- Trust + payments ----------
   const chip = (p) => `<span class="chip" style="background:${p.color}" title="${esc(p.name)}">${esc(p.short)}</span>`;
-  $("trust").innerHTML = S.trustPoints.map((t) => `<li>${esc(t)}</li>`).join("");
-  $("payStrip").innerHTML = S.payments.map(chip).join("");
-  $("payments").innerHTML = S.payments.map(chip).join("");
-  $("socials").innerHTML = S.socials.map((s) => `<a class="chip" href="${esc(s.url)}" style="background:${s.color}" aria-label="${esc(s.name)}">${esc(s.short)}</a>`).join("");
+  if (S.staticBanner) {
+    $("trust").hidden = true;
+    $("payStrip").classList.add("has-img");
+    $("payStrip").innerHTML = img(S.staticBanner, "Payment methods");
+  } else {
+    $("trust").innerHTML = S.trustPoints.map((t) => `<li>${esc(t)}</li>`).join("");
+    $("payStrip").innerHTML = S.payments.map(chip).join("");
+  }
 
   // ---------- Wallet ----------
   $("balance").textContent = money(0);
@@ -75,6 +69,8 @@
   const r = S.referral;
   const banner = $("referralBanner");
   if (r.img) {
+    // The artwork leaves its lower part empty for the four buttons.
+    $("referral").classList.add("has-img");
     banner.classList.add("has-img");
     banner.innerHTML = img(r.img, r.heading);
   } else {
@@ -89,14 +85,6 @@
     else copyLink();
   });
 
-  // ---------- Hot games ----------
-  $("hotGames").innerHTML = S.hotGames.map((g) => `
-    <a class="hot" href="${esc(g.url)}">
-      <div class="art" style="--h:${g.hue}">${g.icon}${img(g.img, g.name)}</div>
-      <div class="name">${esc(g.name)}</div>
-      <div class="meta"><span>${esc(g.provider)}</span><span class="rtp">RTP ${esc(g.rtp)}</span></div>
-    </a>`).join("");
-
   // ---------- Category tabs + game grid ----------
   const tabs = $("tabs");
   const showCategory = (id) => {
@@ -109,20 +97,22 @@
     const list = S.games.filter((g) => g.category === id);
     $("games").innerHTML = list.length
       ? list.map((g) => `
-        <a class="game art" href="${esc(g.url)}" style="--h:${g.hue}" aria-label="${esc(g.name)}">
-          ${g.icon}${img(g.img, g.name)}
+        <a class="game art ${g.img ? "has-img" : ""}" href="${esc(g.url)}" style="--h:${g.hue || 0}" aria-label="${esc(g.name)}">
+          ${g.img ? "" : g.icon || ""}${img(g.img, g.name)}
           ${g.img ? "" : `<span class="side">${esc(cat.label)}</span><span class="label">${esc(g.name)}</span>`}
           ${g.tag ? `<span class="tag">${esc(g.tag)}</span>` : ""}
         </a>`).join("")
       : `<p class="game-empty">Coming soon</p>`;
   };
-  tabs.innerHTML = S.categories.map((c) => `<button class="btn tab" role="tab" data-id="${esc(c.id)}"><i>${c.icon}</i>${esc(c.label)}</button>`).join("");
+  tabs.innerHTML = S.categories.map((c) =>
+    c.img
+      ? `<button class="tab has-img" role="tab" data-id="${esc(c.id)}">${img(c.img, c.label)}</button>`
+      : `<button class="btn tab" role="tab" data-id="${esc(c.id)}"><i>${c.icon}</i>${esc(c.label)}</button>`
+  ).join("");
   tabs.addEventListener("click", (e) => {
     const t = e.target.closest(".tab");
     if (t) showCategory(t.dataset.id);
   });
-  $("tabsPrev").addEventListener("click", () => tabs.scrollBy({ left: -204 }));
-  $("tabsNext").addEventListener("click", () => tabs.scrollBy({ left: 204 }));
   showCategory(S.categories[0].id);
 
   // ---------- Toast ----------

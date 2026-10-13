@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>YOURBRAND</title>
-  <meta name="description" content="YOURBRAND — edit this description in index.html.">
-  <meta name="theme-color" content="#0b2a7a">
+  <title>i1Malaysia – Online Casino Malaysia | App Download &amp; Deposit</title>
+  <meta name="description" content="i1Malaysia official site: download the i1Malaysia app for Android and iOS, deposit from RM1 by e-wallet, DuitNow QR or online banking, and withdraw from RM30.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="i1Malaysia">
+  <meta property="og:title" content="i1Malaysia – Online Casino Malaysia | App Download &amp; Deposit">
+  <meta property="og:description" content="Download the i1Malaysia app, deposit from RM1 by e-wallet, DuitNow QR or online banking, and play slots, live casino, sportsbook and 4D.">
+  <meta property="og:image" content="assets/banners/banner-1.jpg">
+  <link rel="icon" href="assets/logo.png">
+  <meta name="theme-color" content="#14103a">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,13 +21,10 @@
     <header class="topbar">
       <a class="logo" href="./" id="logo"></a>
       <a class="partner" id="partner"></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <a class="menu-btn" data-link="register" aria-label="Menu">
         <span></span><span></span><span></span>
-      </button>
+      </a>
     </header>
-
-    <nav class="menu" id="menu" hidden></nav>
-
     <div class="marquee" aria-label="Announcement"><span id="marquee"></span></div>
 
     <section class="carousel" aria-label="Promotions">
@@ -31,9 +35,10 @@
     <ul class="trust" id="trust"></ul>
     <div class="pay-strip" id="payStrip"></div>
 
+    <div class="account">
     <div class="auth-row">
-      <a class="btn btn-red btn-lg" data-link="login">LOGIN <span class="btn-ico">👤</span></a>
-      <a class="btn btn-blue btn-lg" data-link="register"><span class="btn-ico">📝</span> REGISTER</a>
+      <a class="img-btn" data-link="login"><img src="assets/ui/btn-login.png" alt="Login"></a>
+      <a class="img-btn" data-link="register"><img src="assets/ui/btn-register.png" alt="Register"></a>
     </div>
 
     <section class="wallet">
@@ -44,74 +49,104 @@
         <p>Minimum Withdrawal: <b id="minWithdrawal"></b></p>
       </div>
       <div class="wallet-actions">
-        <a class="btn btn-red" data-link="deposit">⬆ DEPOSIT</a>
-        <a class="btn btn-silver" data-link="withdraw">⬇ WITHDRAW</a>
-        <button class="btn btn-silver" id="refreshBtn">⟳ REFRESH</button>
+        <a class="img-btn" data-link="deposit"><img src="assets/ui/btn-deposit.png" alt="Deposit"></a>
+        <a class="img-btn" data-link="withdraw"><img src="assets/ui/btn-withdraw.png" alt="Withdraw"></a>
+        <button class="img-btn" id="refreshBtn"><img src="assets/ui/btn-refresh.png" alt="Refresh"></button>
       </div>
     </section>
+    </div>
 
-    <section class="referral">
+    <section class="referral" id="referral">
       <div class="referral-banner" id="referralBanner"></div>
       <div class="referral-actions">
-        <button class="btn btn-red" id="shareBtn">➤ SHARE</button>
-        <a class="btn btn-silver" data-link="downlineChart">👥 DOWNLINE CHART</a>
-        <button class="btn btn-silver" id="copyBtn">📋 COPY REFERRAL LINK</button>
-        <a class="btn btn-silver" data-link="freeBot">🤖 FREE BOT</a>
+        <button class="img-btn" id="shareBtn"><img src="assets/ui/btn-share.png" alt="Share"></button>
+        <a class="img-btn" data-link="downlineChart"><img src="assets/ui/btn-downline.png" alt="Downline"></a>
+        <button class="img-btn" id="copyBtn"><img src="assets/ui/btn-copy.png" alt="Copy referral link"></button>
+        <a class="img-btn" data-link="referralInfo"><img src="assets/ui/btn-more.png" alt="More info"></a>
       </div>
-    </section>
-
-    <section class="block">
-      <h2 class="block-title red"><span class="top-badge">TOP</span> HOT GAMES</h2>
-      <div class="hscroll" id="hotGames"></div>
     </section>
 
     <section class="block">
       <div class="tabs-wrap">
-        <button class="tabs-arrow" id="tabsPrev" aria-label="Previous categories">‹</button>
         <div class="tabs" id="tabs" role="tablist"></div>
-        <button class="tabs-arrow" id="tabsNext" aria-label="Next categories">›</button>
       </div>
       <div class="game-grid" id="games"></div>
     </section>
 
+    <!-- Search-engine content. Written in the HTML (not config.js) so crawlers
+         read it without running scripts. Keep the FAQ text in sync with the
+         FAQPage JSON-LD at the bottom of this file. -->
+    <section class="seo">
+      <h1>i1Malaysia – Trusted Online Casino Malaysia</h1>
+      <p>i1Malaysia is an online casino for players in Malaysia, with slot games, live casino, sportsbook, 4D and app games from providers such as JILI, Playtech, Pragmatic Play and Joker. Register with your mobile number, deposit from RM1 and play on the website or in the i1Malaysia app.</p>
+
+      <h2>i1Malaysia App Download</h2>
+      <p>The i1Malaysia app is available for Android and iOS. Use the <a data-link="androidApp">Android download</a> or <a data-link="iosApp">iOS download</a> button to install it, then log in with the same account you use on the website.</p>
+
+      <h2>i1Malaysia Deposit</h2>
+      <p>An i1Malaysia deposit starts from RM1. You can pay by online banking, e-wallet such as Touch 'n Go eWallet, Boost, GrabPay and ShopeePay, DuitNow QR, or telco reload PIN. The minimum withdrawal is RM30.</p>
+
+      <h2>i1Malaysia FAQ</h2>
+      <details>
+        <summary>What is i1Malaysia?</summary>
+        <p>i1Malaysia is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet.</p>
+      </details>
+      <details>
+        <summary>How do I download the i1Malaysia app?</summary>
+        <p>Tap the Android download or iOS download link in the i1Malaysia App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your i1Malaysia account.</p>
+      </details>
+      <details>
+        <summary>How do I make an i1Malaysia deposit?</summary>
+        <p>Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. i1Malaysia accepts online banking, e-wallets, DuitNow QR and telco reload PIN.</p>
+      </details>
+      <details>
+        <summary>What are the minimum deposit and withdrawal at i1Malaysia?</summary>
+        <p>The minimum deposit is RM1 and the minimum withdrawal is RM30.</p>
+      </details>
+      <details>
+        <summary>How do I register an i1Malaysia account?</summary>
+        <p>Tap Register, enter your mobile number and confirm it with the verification code sent by SMS. Use your real name and bank account details so withdrawals can be paid to you.</p>
+      </details>
+      <details>
+        <summary>What bonuses does i1Malaysia offer?</summary>
+        <p>i1Malaysia offers a 50% welcome bonus, a 20% daily bonus, a 10% unlimited bonus and a 5% rebate credited every Monday at 12AM. Terms and rollover requirements apply to each bonus.</p>
+      </details>
+      <details>
+        <summary>How do I contact i1Malaysia customer service?</summary>
+        <p>Tap Live Chat at the bottom of the page. Customer service is available 24 hours a day.</p>
+      </details>
+    </section>
+
     <footer class="footer">
-      <h3>WE ACCEPT</h3>
-      <div class="chips" id="payments"></div>
-
-      <div class="footer-row">
-        <div>
-          <h3>FOLLOW US</h3>
-          <div class="chips" id="socials"></div>
-        </div>
-        <div>
-          <h3>OUR APP</h3>
-          <div class="app-btns">
-            <a class="app-btn android" data-link="androidApp" aria-label="Android app">🤖</a>
-            <a class="app-btn ios" data-link="iosApp" aria-label="iOS app">🍎</a>
-          </div>
-        </div>
-      </div>
-
-      <p class="other-site">VISIT OUR OTHER OFFICIAL WEBSITE:<br><a id="otherSite"></a></p>
-      <a class="btn-pill" data-link="readMore">Read More</a>
       <p class="footer-note" id="footerNote"></p>
     </footer>
   </div>
 
-  <aside class="side-tabs">
-    <a class="side-tab save" data-link="saveLinks">🔗 SAVE LINKS</a>
-    <a class="side-tab gold" data-link="partnership">PARTNERSHIP ★★★★</a>
-  </aside>
 
   <nav class="bottom-nav">
-    <a class="active" href="./"><i>🏠</i>HOME</a>
-    <a data-link="history"><i>🧾</i>HISTORY</a>
-    <a class="bonus" data-link="bonus"><i>💵<b class="badge">1</b></i>BONUS</a>
-    <a data-link="liveChat"><i>💬<b class="badge">1</b></i>LIVE CHAT</a>
-    <a data-link="settings"><i>⚙️</i>SETTING</a>
+    <a href="./"><img src="assets/ui/nav-home.png" alt="Home"></a>
+    <a data-link="history"><img src="assets/ui/nav-history.png" alt="History"></a>
+    <a data-link="liveChat"><img src="assets/ui/nav-chat.png" alt="Live chat"><b class="badge">1</b></a>
+    <a data-link="settings"><img src="assets/ui/nav-setting.png" alt="Setting"></a>
   </nav>
 
   <div class="toast" id="toast" role="status"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is i1Malaysia?", "acceptedAnswer": { "@type": "Answer", "text": "i1Malaysia is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet." } },
+      { "@type": "Question", "name": "How do I download the i1Malaysia app?", "acceptedAnswer": { "@type": "Answer", "text": "Tap the Android download or iOS download link in the i1Malaysia App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your i1Malaysia account." } },
+      { "@type": "Question", "name": "How do I make an i1Malaysia deposit?", "acceptedAnswer": { "@type": "Answer", "text": "Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. i1Malaysia accepts online banking, e-wallets, DuitNow QR and telco reload PIN." } },
+      { "@type": "Question", "name": "What are the minimum deposit and withdrawal at i1Malaysia?", "acceptedAnswer": { "@type": "Answer", "text": "The minimum deposit is RM1 and the minimum withdrawal is RM30." } },
+      { "@type": "Question", "name": "How do I register an i1Malaysia account?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Register, enter your mobile number and confirm it with the verification code sent by SMS. Use your real name and bank account details so withdrawals can be paid to you." } },
+      { "@type": "Question", "name": "What bonuses does i1Malaysia offer?", "acceptedAnswer": { "@type": "Answer", "text": "i1Malaysia offers a 50% welcome bonus, a 20% daily bonus, a 10% unlimited bonus and a 5% rebate credited every Monday at 12AM. Terms and rollover requirements apply to each bonus." } },
+      { "@type": "Question", "name": "How do I contact i1Malaysia customer service?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Live Chat at the bottom of the page. Customer service is available 24 hours a day." } }
+    ]
+  }
+  </script>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
