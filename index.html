@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>12Cuci – Online Casino Malaysia | App Download &amp; Deposit</title>
-  <meta name="description" content="12Cuci Malaysia: download the 12Cuci app for Android and iOS, deposit from RM1 by e-wallet, DuitNow QR or online banking, and withdraw from RM25.">
+  <title>i1Malaysia – Online Casino Malaysia | App Download &amp; Deposit</title>
+  <meta name="description" content="i1Malaysia official site: download the i1Malaysia app for Android and iOS, deposit from RM1 by e-wallet, DuitNow QR or online banking, and withdraw from RM30.">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="YX7V5NyE-aUWZnoPVTLBP4kU8aAPLY7cWsVQcVdKLTo">
   <link rel="canonical" href="https://www.i1malaysia.online/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="12Cuci">
-  <meta property="og:title" content="12Cuci – Online Casino Malaysia | App Download &amp; Deposit">
-  <meta property="og:description" content="Download the 12Cuci app, deposit from RM1 by e-wallet, DuitNow QR or online banking, and play slots, live casino, sportsbook and 4D.">
+  <meta property="og:site_name" content="i1Malaysia">
+  <meta property="og:title" content="i1Malaysia – Online Casino Malaysia | App Download &amp; Deposit">
+  <meta property="og:description" content="Download the i1Malaysia app, deposit from RM1 by e-wallet, DuitNow QR or online banking, and play slots, live casino, sportsbook and 4D.">
   <meta property="og:url" content="https://www.i1malaysia.online/">
-  <meta property="og:image" content="https://www.i1malaysia.online/assets/12cuci/banners/banner-1.jpg">
-  <link rel="icon" href="assets/12cuci/logo.png">
-  <meta name="theme-color" content="#011b1d">
+  <meta property="og:image" content="https://www.i1malaysia.online/assets/banners/banner-1.jpg">
+  <link rel="icon" href="assets/logo.png">
+  <meta name="theme-color" content="#14103a">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,10 +23,11 @@
 
     <header class="topbar">
       <a class="logo" href="./" id="logo"></a>
-      <a class="partner" data-link="partnership" id="partner"></a>
-      <a class="menu-btn" data-link="register" aria-label="Menu"><img src="assets/12cuci/menu.png" alt=""></a>
+      <a class="partner" id="partner"></a>
+      <a class="menu-btn" data-link="register" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </a>
     </header>
-
     <div class="marquee" aria-label="Announcement"><span id="marquee"></span></div>
 
     <section class="carousel" aria-label="Promotions">
@@ -34,196 +35,123 @@
       <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
-    <a class="pay-strip" data-link="deposit"><img src="assets/12cuci/static.png" alt="Trusted &amp; safe, fast service, fast payout. We accept online banking and QR code."></a>
+    <ul class="trust" id="trust"></ul>
+    <div class="pay-strip" id="payStrip"></div>
 
+    <div class="account">
     <div class="auth-row">
-      <a class="img-btn" data-link="login"><img src="assets/12cuci/btn-login.gif" alt="Login"></a>
-      <a class="img-btn" data-link="register"><img src="assets/12cuci/btn-register.gif" alt="Register"></a>
+      <a class="img-btn" data-link="login"><img src="assets/ui/btn-login.png" alt="Login"></a>
+      <a class="img-btn" data-link="register"><img src="assets/ui/btn-register.png" alt="Register"></a>
     </div>
 
     <section class="wallet">
       <div class="wallet-info">
-        <p class="wallet-label">Baki:</p>
+        <p class="wallet-label">Balance:</p>
         <p class="wallet-amount" id="balance"></p>
-        <p>Deposit Minimum: <b id="minDeposit"></b></p>
-        <p>Withdraw Minimum: <b id="minWithdrawal"></b></p>
+        <p>Minimum Deposit: <b id="minDeposit"></b></p>
+        <p>Minimum Withdrawal: <b id="minWithdrawal"></b></p>
       </div>
       <div class="wallet-actions">
-        <a class="img-btn" data-link="deposit"><img src="assets/12cuci/btn-deposit.gif" alt="Deposit"></a>
-        <a class="img-btn" data-link="withdraw"><img src="assets/12cuci/btn-withdraw.gif" alt="Withdraw"></a>
-        <button class="img-btn" id="refreshBtn"><img src="assets/12cuci/btn-refresh.gif" alt="Refresh"></button>
+        <a class="img-btn" data-link="deposit"><img src="assets/ui/btn-deposit.png" alt="Deposit"></a>
+        <a class="img-btn" data-link="withdraw"><img src="assets/ui/btn-withdraw.png" alt="Withdraw"></a>
+        <button class="img-btn" id="refreshBtn"><img src="assets/ui/btn-refresh.png" alt="Refresh"></button>
       </div>
     </section>
+    </div>
 
-    <a class="promo" data-link="gameTips"><img src="assets/12cuci/game-tips.gif" alt="Latest game tips and bet ratio"></a>
-
-    <section class="referral">
-      <img src="assets/12cuci/refer.gif" alt="RM10 free share plus 5% commission. Share more, earn more.">
+    <section class="referral" id="referral">
+      <div class="referral-banner" id="referralBanner"></div>
       <div class="referral-actions">
-        <button class="img-btn" id="shareBtn"><img src="assets/12cuci/btn-share.gif" alt="Share"></button>
-        <a class="img-btn" data-link="downlineChart"><img src="assets/12cuci/btn-downline.gif" alt="Downline chart"></a>
-        <button class="img-btn" id="copyBtn"><img src="assets/12cuci/btn-copy.gif" alt="Copy referral link"></button>
-        <a class="img-btn" data-link="referralInfo"><img src="assets/12cuci/btn-more.gif" alt="Free bot"></a>
+        <button class="img-btn" id="shareBtn"><img src="assets/ui/btn-share.png" alt="Share"></button>
+        <a class="img-btn" data-link="downlineChart"><img src="assets/ui/btn-downline.png" alt="Downline"></a>
+        <button class="img-btn" id="copyBtn"><img src="assets/ui/btn-copy.png" alt="Copy referral link"></button>
+        <a class="img-btn" data-link="referralInfo"><img src="assets/ui/btn-more.png" alt="More info"></a>
       </div>
-    </section>
-
-    <section class="lucky">
-      <img src="assets/12cuci/lucky.png" alt="Lucky draw deposit: every RM10 deposit gets 1 lucky number. 1st prize RM300, 2nd prize RM200, 3rd prize RM100.">
-      <a class="img-btn" data-link="luckyNumber"><img src="assets/12cuci/btn-lucky.gif" alt="My lucky number"></a>
-    </section>
-
-    <a class="promo" data-link="telegram" target="_blank" rel="noopener"><img src="assets/12cuci/telegram.gif" alt="Subscribe to 12Cuci on Telegram"></a>
-
-    <section class="block">
-      <h2 class="block-title"><span class="top-badge">TOP</span> HOT GAMES</h2>
-      <div class="hscroll" id="hotGames"></div>
     </section>
 
     <section class="block">
       <div class="tabs-wrap">
-        <button class="arrow" data-scroll="-1" aria-label="Scroll left">&#8249;</button>
-        <div class="tabs" id="tabs"></div>
-        <button class="arrow" data-scroll="1" aria-label="Scroll right">&#8250;</button>
+        <div class="tabs" id="tabs" role="tablist"></div>
       </div>
       <div class="game-grid" id="games"></div>
-    </section>
-
-    <section class="block">
-      <h2 class="testi-title">Testimoni</h2>
-      <div class="hscroll testi" id="testimonials"></div>
     </section>
 
     <!-- Search-engine content. Written in the HTML (not config.js) so crawlers
          read it without running scripts. Keep the FAQ text in sync with the
          FAQPage JSON-LD at the bottom of this file. -->
     <section class="seo">
-      <h1>12Cuci – Trusted Online Casino Malaysia</h1>
-      <p>12Cuci is an online casino for players in Malaysia, with slot games, live casino, sportsbook, 4D and app games from providers such as JILI, Playtech, Pragmatic Play and Joker. Register with your mobile number, deposit from RM1 and play on the website or in the 12Cuci app.</p>
+      <h1>i1Malaysia – Trusted Online Casino Malaysia</h1>
+      <p>i1Malaysia is an online casino for players in Malaysia, with slot games, live casino, sportsbook, 4D and app games from providers such as JILI, Playtech, Pragmatic Play and Joker. Register with your mobile number, deposit from RM1 and play on the website or in the i1Malaysia app.</p>
 
-      <div class="collapsible">
-      <div lang="ms">
-        <h2>Kasino Online Malaysia dan Judi Online Malaysia di 12Cuci</h2>
-        <p>12Cuci ialah kasino online Malaysia untuk pemain berumur 18 tahun ke atas. Satu akaun dan satu dompet memberi anda akses kepada slot online, live casino, taruhan sukan dan loteri, jadi anda tidak perlu mendaftar di banyak laman judi online Malaysia yang berasingan.</p>
+      <h2>i1Malaysia App Download</h2>
+      <p>The i1Malaysia app is available for Android and iOS. Use the <a data-link="androidApp">Android download</a> or <a data-link="iosApp">iOS download</a> button to install it, then log in with the same account you use on the website. See the <a href="app-download">i1Malaysia app download guide</a> for step-by-step instructions.</p>
 
-        <h2>Slot Online, Live Casino, Baccarat dan Poker</h2>
-        <p>Pilih slot online daripada penyedia seperti Pragmatic Play, JILI, Mega888, Kiss918 dan Playtech. Untuk pengalaman meja sebenar, live casino 12Cuci menawarkan baccarat, roulette dan permainan lain dengan dealer langsung. Pemain yang suka kemahiran juga boleh bermain poker.</p>
+      <h2>i1Malaysia Deposit</h2>
+      <p>An i1Malaysia deposit starts from RM1. You can pay by online banking, e-wallet such as Touch 'n Go eWallet, Boost, GrabPay and ShopeePay, DuitNow QR, or telco reload PIN. The minimum withdrawal is RM30. See the <a href="deposit">i1Malaysia deposit guide</a> for each step, or the <a href="register">i1Malaysia register guide</a> if you are new.</p>
 
-        <h2>Taruhan Sukan, Sukan Maya dan Loteri</h2>
-        <p>Buat taruhan online pada bola sepak dan sukan lain melalui sportsbook, atau cuba sukan maya yang berlangsung sepanjang hari. Peminat nombor boleh bermain loteri 4D, dan setiap deposit RM10 juga memberi anda 1 nombor dalam <a href="12cuci-lucky-draw">cabutan bertuah harian 12Cuci</a>.</p>
-
-        <h2>Bonus Selamat Datang dan Cashback</h2>
-        <p>12Cuci menjalankan promosi setiap minggu, termasuk cashback, free share RM10 dengan komisen 5% untuk downline, dan cabutan bertuah. Semak banner promosi di halaman utama untuk bonus selamat datang dan tawaran terkini. Terma dan syarat rollover dikenakan.</p>
-
-        <h2>Deposit RM10 dengan Touch n Go, DuitNow dan FPX</h2>
-        <p>Deposit bermula dari RM1. Anda boleh membayar dengan Touch n Go eWallet, Boost, GrabPay, DuitNow QR, FPX dan perbankan online, atau tambah nilai telco. Deposit RM10 atau lebih untuk turut layak bagi cabutan bertuah. Pengeluaran minimum ialah RM25. Lihat <a href="deposit">panduan deposit 12Cuci</a> untuk langkah demi langkah.</p>
-      </div>
-
-      <h2>12Cuci App Download</h2>
-      <p>The 12Cuci app is available for Android and iOS. Use the <a data-link="androidApp">Android download</a> or <a data-link="iosApp">iOS download</a> button to install it, then log in with the same account you use on the website. See the <a href="app-download">12Cuci app download guide</a> for step-by-step instructions.</p>
-
-      <h2>12Cuci Deposit</h2>
-      <p>A 12Cuci deposit starts from RM1. You can pay by online banking, e-wallet such as Touch 'n Go eWallet, Boost, GrabPay and ShopeePay, DuitNow QR, or telco reload PIN. The minimum withdrawal is RM25. See the <a href="deposit">12Cuci deposit guide</a> for each step, or the <a href="register">12Cuci register guide</a> if you are new.</p>
-
-      <h2>12Cuci Blog</h2>
-      <ul>
-        <li><a href="12cuci-lucky-draw">12Cuci lucky draw: how lucky numbers work</a></li>
-        <li><a href="12cuci-referral">12Cuci referral: RM10 free share and 5% commission</a></li>
-        <li><a href="12cuci-slot-games">12Cuci slot games: providers you can play</a></li>
-        <li><a href="12cuci-payment-methods">12Cuci payment methods: banks, e-wallet, telco and USDT</a></li>
-        <li><a href="12cuci-login">12Cuci login: how to sign in and fix login problems</a></li>
-        <li><a href="12cuci-register-checklist">12Cuci register: what you need before you sign up</a></li>
-        <li><a href="12cuci-deposit-problems">12Cuci deposit not received? What to do</a></li>
-        <li><a href="12cuci-withdraw">12Cuci withdraw: minimum RM25, rollover and tips</a></li>
-        <li><a href="12cuci-apk">12Cuci APK: safe download and install on Android</a></li>
-        <li><a href="12cuci-app-vs-browser">12Cuci app vs browser: which should you use?</a></li>
-        <li><a href="blog">All 12Cuci blog posts</a></li>
-      </ul>
-
-      <h2>12Cuci FAQ</h2>
+      <h2>i1Malaysia FAQ</h2>
       <details>
-        <summary>What is 12Cuci?</summary>
-        <p>12Cuci is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet.</p>
+        <summary>What is i1Malaysia?</summary>
+        <p>i1Malaysia is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet.</p>
       </details>
       <details>
-        <summary>How do I download the 12Cuci app?</summary>
-        <p>Tap the Android download or iOS download link in the 12Cuci App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your 12Cuci account.</p>
+        <summary>How do I download the i1Malaysia app?</summary>
+        <p>Tap the Android download or iOS download link in the i1Malaysia App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your i1Malaysia account.</p>
       </details>
       <details>
-        <summary>How do I make a 12Cuci deposit?</summary>
-        <p>Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. 12Cuci accepts online banking, e-wallets, DuitNow QR and telco reload PIN.</p>
+        <summary>How do I make an i1Malaysia deposit?</summary>
+        <p>Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. i1Malaysia accepts online banking, e-wallets, DuitNow QR and telco reload PIN.</p>
       </details>
       <details>
-        <summary>What are the minimum deposit and withdrawal at 12Cuci?</summary>
-        <p>The minimum deposit is RM1 and the minimum withdrawal is RM25.</p>
+        <summary>What are the minimum deposit and withdrawal at i1Malaysia?</summary>
+        <p>The minimum deposit is RM1 and the minimum withdrawal is RM30.</p>
       </details>
       <details>
-        <summary>How do I register a 12Cuci account?</summary>
+        <summary>How do I register an i1Malaysia account?</summary>
         <p>Tap Register, then enter your mobile number, a password, your date of birth and how you heard about the site. The referral code is filled in for you. You must be 18 or older.</p>
       </details>
       <details>
-        <summary>What bonuses does 12Cuci offer?</summary>
-        <p>12Cuci offers RM10 for every friend you share with plus 5% commission on your downline, and a daily lucky draw where every RM10 deposit earns 1 lucky number, with prizes of RM300, RM200 and RM100. Terms and rollover requirements apply.</p>
+        <summary>What bonuses does i1Malaysia offer?</summary>
+        <p>i1Malaysia offers a 50% welcome bonus, a 20% daily bonus, a 10% unlimited bonus and a 5% rebate credited every Monday at 12AM. Terms and rollover requirements apply to each bonus.</p>
       </details>
       <details>
-        <summary>How do I contact 12Cuci customer service?</summary>
+        <summary>How do I contact i1Malaysia customer service?</summary>
         <p>Tap Live Chat at the bottom of the page. Customer service is available 24 hours a day.</p>
       </details>
-      </div>
     </section>
 
     <footer class="footer">
-      <div class="footer-cols">
-        <div>
-          <h3>PARTNERSHIP</h3>
-          <a data-link="partnership" class="partners">
-            <img src="assets/12cuci/partner-1.png" alt="Syarikat Cuci">
-            <img src="assets/12cuci/partner-2.png" alt="100 Cuci">
-          </a>
-        </div>
-        <div>
-          <h3>PROVIDERS</h3>
-          <img src="assets/12cuci/providers.png" alt="iovation, bmm, iTech Labs, TST verified, GoDaddy verified and secured">
-        </div>
-      </div>
-      <h3>WE ACCEPT</h3>
-      <div class="icons" id="payments"></div>
-      <p class="copyright" id="copyright"></p>
-      <a class="read-more" data-link="readMore">Read More</a>
-      <p class="footer-note">18+ only. Please play responsibly.</p>
+      <p class="footer-note" id="footerNote"></p>
     </footer>
   </div>
 
-  <a class="side-tab" data-link="partnership"><img src="assets/12cuci/float.png" alt="Partnership"></a>
 
   <nav class="bottom-nav">
-    <a href="./"><img src="assets/12cuci/nav-home.gif" alt="Home"></a>
-    <a data-link="history"><img src="assets/12cuci/nav-history.gif" alt="History"></a>
-    <a data-link="bonus"><img src="assets/12cuci/nav-bonus.gif" alt="Bonus"><b class="badge">1</b></a>
-    <a data-link="liveChat"><img src="assets/12cuci/nav-chat.gif" alt="Live chat"><b class="badge">1</b></a>
-    <a data-link="settings"><img src="assets/12cuci/nav-setting.gif" alt="Setting"></a>
+    <a href="./"><img src="assets/ui/nav-home.png" alt="Home"></a>
+    <a data-link="history"><img src="assets/ui/nav-history.png" alt="History"></a>
+    <a data-link="liveChat"><img src="assets/ui/nav-chat.png" alt="Live chat"><b class="badge">1</b></a>
+    <a data-link="settings"><img src="assets/ui/nav-setting.png" alt="Setting"></a>
   </nav>
 
   <div class="toast" id="toast" role="status"></div>
-
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "What is 12Cuci?", "acceptedAnswer": { "@type": "Answer", "text": "12Cuci is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet." } },
-      { "@type": "Question", "name": "How do I download the 12Cuci app?", "acceptedAnswer": { "@type": "Answer", "text": "Tap the Android download or iOS download link in the 12Cuci App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your 12Cuci account." } },
-      { "@type": "Question", "name": "How do I make a 12Cuci deposit?", "acceptedAnswer": { "@type": "Answer", "text": "Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. 12Cuci accepts online banking, e-wallets, DuitNow QR and telco reload PIN." } },
-      { "@type": "Question", "name": "What are the minimum deposit and withdrawal at 12Cuci?", "acceptedAnswer": { "@type": "Answer", "text": "The minimum deposit is RM1 and the minimum withdrawal is RM25." } },
-      { "@type": "Question", "name": "How do I register a 12Cuci account?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Register, then enter your mobile number, a password, your date of birth and how you heard about the site. The referral code is filled in for you. You must be 18 or older." } },
-      { "@type": "Question", "name": "What bonuses does 12Cuci offer?", "acceptedAnswer": { "@type": "Answer", "text": "12Cuci offers RM10 for every friend you share with plus 5% commission on your downline, and a daily lucky draw where every RM10 deposit earns 1 lucky number, with prizes of RM300, RM200 and RM100. Terms and rollover requirements apply." } },
-      { "@type": "Question", "name": "How do I contact 12Cuci customer service?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Live Chat at the bottom of the page. Customer service is available 24 hours a day." } }
+      { "@type": "Question", "name": "What is i1Malaysia?", "acceptedAnswer": { "@type": "Answer", "text": "i1Malaysia is an online casino for players in Malaysia. It offers slot games, live casino, sportsbook, 4D and app games in one account and one wallet." } },
+      { "@type": "Question", "name": "How do I download the i1Malaysia app?", "acceptedAnswer": { "@type": "Answer", "text": "Tap the Android download or iOS download link in the i1Malaysia App Download section on this page and follow the install steps on your phone. On Android you may be asked to allow installing apps from your browser. After installing, log in with your i1Malaysia account." } },
+      { "@type": "Question", "name": "How do I make an i1Malaysia deposit?", "acceptedAnswer": { "@type": "Answer", "text": "Log in, tap Deposit, choose a payment method, enter the amount and follow the payment instructions. i1Malaysia accepts online banking, e-wallets, DuitNow QR and telco reload PIN." } },
+      { "@type": "Question", "name": "What are the minimum deposit and withdrawal at i1Malaysia?", "acceptedAnswer": { "@type": "Answer", "text": "The minimum deposit is RM1 and the minimum withdrawal is RM30." } },
+      { "@type": "Question", "name": "How do I register an i1Malaysia account?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Register, then enter your mobile number, a password, your date of birth and how you heard about the site. The referral code is filled in for you. You must be 18 or older." } },
+      { "@type": "Question", "name": "What bonuses does i1Malaysia offer?", "acceptedAnswer": { "@type": "Answer", "text": "i1Malaysia offers a 50% welcome bonus, a 20% daily bonus, a 10% unlimited bonus and a 5% rebate credited every Monday at 12AM. Terms and rollover requirements apply to each bonus." } },
+      { "@type": "Question", "name": "How do I contact i1Malaysia customer service?", "acceptedAnswer": { "@type": "Answer", "text": "Tap Live Chat at the bottom of the page. Customer service is available 24 hours a day." } }
     ]
   }
   </script>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
-  <script src="collapse.js"></script>
 </body>
 </html>

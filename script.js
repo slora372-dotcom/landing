@@ -3,20 +3,33 @@
   const $ = (id) => document.getElementById(id);
   const money = (n) => S.currency + Number(n).toFixed(2);
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const img = (src, alt) => `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
-  const link = (key) => esc(S.links[key] || "#");
+  const img = (src, alt) => (src ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">` : "");
 
   // ---------- Brand ----------
-  $("logo").innerHTML = `<img src="${esc(S.brand.logo)}" alt="${esc(S.brand.name)}">`;
-  $("partner").innerHTML = img(S.brand.partner.img, S.brand.partner.name);
+  $("logo").innerHTML = S.brand.logo
+    ? img(S.brand.logo, S.brand.name)
+    : `<strong>${esc(S.brand.name)}</strong><small>${esc(S.brand.tagline)}</small>`;
+  $("partner").href = S.brand.partner.url;
+  $("partner").innerHTML = S.brand.partner.img
+    ? img(S.brand.partner.img, S.brand.partner.name)
+    : `<strong>${esc(S.brand.partner.name)}</strong><small>${esc(S.brand.partner.label)}</small>`;
   $("marquee").textContent = S.announcement;
-  $("copyright").textContent = S.copyright;
+  $("footerNote").textContent = S.footerNote;
+
+  document.querySelectorAll("[data-link]").forEach((el) => {
+    el.href = S.links[el.dataset.link] || "#";
+  });
 
   // ---------- Carousel ----------
   const track = $("carouselTrack");
   const dots = $("carouselDots");
-  track.innerHTML = S.banners.map((src, i) =>
-    `<a class="slide" href="${link("register")}"><img src="${esc(src)}" alt="12Cuci promotion ${i + 1}"${i ? ' loading="lazy"' : ""}></a>`
+  track.innerHTML = S.banners.map((b) =>
+    b.img
+      ? `<a class="slide has-img" href="${esc(b.url)}">${img(b.img, b.title)}</a>`
+      : `<a class="slide ${b.dark ? "dark" : ""}" href="${esc(b.url)}" style="background:linear-gradient(135deg,${b.colors[0]},${b.colors[1]})">
+           <span class="slide-icon">${b.icon}</span>
+           <span class="slide-text"><h3>${esc(b.title)}</h3><em>${esc(b.highlight)}</em><p>${esc(b.sub)}</p></span>
+         </a>`
   ).join("");
   dots.innerHTML = S.banners.map((_, i) => `<button aria-label="Slide ${i + 1}"></button>`).join("");
 
@@ -35,13 +48,35 @@
   let timer = setInterval(() => goTo(slide + 1), 4000);
   track.addEventListener("pointerdown", () => clearInterval(timer), { once: true });
 
+  // ---------- Trust + payments ----------
+  const chip = (p) => `<span class="chip" style="background:${p.color}" title="${esc(p.name)}">${esc(p.short)}</span>`;
+  if (S.staticBanner) {
+    $("trust").hidden = true;
+    $("payStrip").classList.add("has-img");
+    $("payStrip").innerHTML = img(S.staticBanner, "Payment methods");
+  } else {
+    $("trust").innerHTML = S.trustPoints.map((t) => `<li>${esc(t)}</li>`).join("");
+    $("payStrip").innerHTML = S.payments.map(chip).join("");
+  }
+
   // ---------- Wallet ----------
   $("balance").textContent = money(0);
   $("minDeposit").textContent = money(S.minDeposit);
   $("minWithdrawal").textContent = money(S.minWithdrawal);
-  $("refreshBtn").addEventListener("click", () => toast("Sila login untuk lihat baki anda"));
+  $("refreshBtn").addEventListener("click", () => toast("Please log in to view your balance"));
 
   // ---------- Referral ----------
+  const r = S.referral;
+  const banner = $("referralBanner");
+  if (r.img) {
+    // The artwork leaves its lower part empty for the four buttons.
+    $("referral").classList.add("has-img");
+    banner.classList.add("has-img");
+    banner.innerHTML = img(r.img, r.heading);
+  } else {
+    banner.innerHTML = `<h3>${esc(r.heading)}</h3><span class="pct">${esc(r.percent)}</span>
+      <p class="l1">${esc(r.line1)}</p><p class="l2">${esc(r.line2)}</p><p class="foot">${esc(r.footnote)}</p>`;
+  }
   const copyLink = () =>
     navigator.clipboard.writeText(S.referralUrl).then(() => toast("Referral link copied"), () => toast(S.referralUrl));
   $("copyBtn").addEventListener("click", copyLink);
@@ -50,38 +85,35 @@
     else copyLink();
   });
 
-  // ---------- Games ----------
-  $("hotGames").innerHTML = S.hotGames.map((src, i) =>
-    `<a class="hot" href="${link("games")}">${img(src, `Hot game ${i + 1}`)}</a>`
+  // ---------- Category tabs + game grid ----------
+  const tabs = $("tabs");
+  const showCategory = (id) => {
+    [...tabs.children].forEach((t) => {
+      const on = t.dataset.id === id;
+      t.classList.toggle("active", on);
+      t.setAttribute("aria-selected", String(on));
+    });
+    const cat = S.categories.find((c) => c.id === id);
+    const list = S.games.filter((g) => g.category === id);
+    $("games").innerHTML = list.length
+      ? list.map((g) => `
+        <a class="game art ${g.img ? "has-img" : ""}" href="${esc(g.url)}" style="--h:${g.hue || 0}" aria-label="${esc(g.name)}">
+          ${g.img ? "" : g.icon || ""}${img(g.img, g.name)}
+          ${g.img ? "" : `<span class="side">${esc(cat.label)}</span><span class="label">${esc(g.name)}</span>`}
+          ${g.tag ? `<span class="tag">${esc(g.tag)}</span>` : ""}
+        </a>`).join("")
+      : `<p class="game-empty">Coming soon</p>`;
+  };
+  tabs.innerHTML = S.categories.map((c) =>
+    c.img
+      ? `<button class="tab has-img" role="tab" data-id="${esc(c.id)}">${img(c.img, c.label)}</button>`
+      : `<button class="btn tab" role="tab" data-id="${esc(c.id)}"><i>${c.icon}</i>${esc(c.label)}</button>`
   ).join("");
-  $("tabs").innerHTML = S.categories.map((c) =>
-    `<a class="tab" href="${link("games")}">${img(c.img, c.label)}</a>`
-  ).join("");
-  $("games").innerHTML = S.games.map((g) =>
-    `<a class="game" href="${link("games")}">${img(g.img, g.name)}</a>`
-  ).join("");
-  document.querySelectorAll("[data-scroll]").forEach((b) =>
-    b.addEventListener("click", () => $("tabs").scrollBy({ left: b.dataset.scroll * $("tabs").clientWidth * 0.75, behavior: "smooth" }))
-  );
-
-  // ---------- Testimonials ----------
-  $("testimonials").innerHTML = S.testimonials.map((t) => `
-    <article class="testi-card">
-      <h3>${esc(t.title)}</h3>
-      <p>${esc(t.text)}</p>
-      <div class="testi-foot">
-        <span class="stars" aria-label="${t.stars} out of 5 stars">${"★".repeat(t.stars)}${"☆".repeat(5 - t.stars)}</span>
-        <span class="testi-user">Ulasan daripada : ${esc(t.user)}</span>
-      </div>
-    </article>`).join("");
-
-  // ---------- Footer ----------
-  $("payments").innerHTML = S.payments.map((p) => img(p.img, p.name)).join("");
-
-  // ---------- Links ----------
-  document.querySelectorAll("[data-link]").forEach((el) => {
-    el.href = S.links[el.dataset.link] || "#";
+  tabs.addEventListener("click", (e) => {
+    const t = e.target.closest(".tab");
+    if (t) showCategory(t.dataset.id);
   });
+  showCategory(S.categories[0].id);
 
   // ---------- Toast ----------
   let toastTimer;
