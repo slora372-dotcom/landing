@@ -278,6 +278,13 @@ img { display: block; max-width: 100%; }
 .guide .crumbs { font-size: 12px; color: #a9a4c0; margin-bottom: 8px; }
 .guide .auth-row { padding: 18px 0 0; }
 
+/* Long sections fold to a preview; collapse.js adds the toggle button. */
+.collapsible { position: relative; max-height: 320px; overflow: hidden; }
+.collapsible:not(.open)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(rgba(13, 10, 34, 0), #0d0a22); pointer-events: none; }
+.collapsible.open { max-height: none; }
+.toggle-btn { display: block; margin: 10px auto 0; padding: 8px 22px; background: none; border: 1px solid #d6a0ff; border-radius: 20px; color: #d6a0ff; font-size: 14px; font-weight: 700; }
+.toggle-btn:hover { background: rgba(214, 160, 255, .1); }
+
 /* ---------- Footer ---------- */
 .footer { padding: 0 18px 20px; }
 .chip { width: 38px; height: 38px; border-radius: 9px; display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 800; flex-shrink: 0; }
