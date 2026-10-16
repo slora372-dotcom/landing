@@ -6,13 +6,21 @@
   const img = (src, alt) => (src ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">` : "");
 
   // ---------- Brand ----------
+  // Logo and badge sit at the top of the page, so they load straight away.
   $("logo").innerHTML = S.brand.logo
-    ? img(S.brand.logo, S.brand.name)
+    ? `<img src="${esc(S.brand.logo)}" alt="${esc(S.brand.name)}">`
     : `<strong>${esc(S.brand.name)}</strong><small>${esc(S.brand.tagline)}</small>`;
   $("partner").href = S.brand.partner.url;
   $("partner").innerHTML = S.brand.partner.img
-    ? img(S.brand.partner.img, S.brand.partner.name)
+    ? `<img src="${esc(S.brand.partner.img)}" alt="${esc(S.brand.partner.name)}">`
     : `<strong>${esc(S.brand.partner.name)}</strong><small>${esc(S.brand.partner.label)}</small>`;
+  // The animated badge is large, so swap it in only after the page has loaded.
+  if (S.brand.partner.animated) {
+    window.addEventListener("load", () => {
+      const badge = $("partner").querySelector("img");
+      if (badge) badge.src = S.brand.partner.animated;
+    });
+  }
   $("marquee").textContent = S.announcement;
   $("footerNote").textContent = S.footerNote;
 
@@ -23,9 +31,9 @@
   // ---------- Carousel ----------
   const track = $("carouselTrack");
   const dots = $("carouselDots");
-  track.innerHTML = S.banners.map((b) =>
+  track.innerHTML = S.banners.map((b, i) =>
     b.img
-      ? `<a class="slide has-img" href="${esc(b.url)}">${img(b.img, b.title)}</a>`
+      ? `<a class="slide has-img" href="${esc(b.url)}"><img src="${esc(b.img)}" alt="${esc(b.title)}"${i ? ' loading="lazy"' : ' fetchpriority="high"'}></a>`
       : `<a class="slide ${b.dark ? "dark" : ""}" href="${esc(b.url)}" style="background:linear-gradient(135deg,${b.colors[0]},${b.colors[1]})">
            <span class="slide-icon">${b.icon}</span>
            <span class="slide-text"><h3>${esc(b.title)}</h3><em>${esc(b.highlight)}</em><p>${esc(b.sub)}</p></span>
