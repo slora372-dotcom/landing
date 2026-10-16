@@ -61,7 +61,8 @@
   if (S.staticBanner) {
     $("trust").hidden = true;
     $("payStrip").classList.add("has-img");
-    $("payStrip").innerHTML = img(S.staticBanner, "Payment methods");
+    // Sits near the top of the page, so load it straight away.
+    $("payStrip").innerHTML = `<img src="${esc(S.staticBanner)}" alt="Payment methods" width="1080" height="210">`;
   } else {
     $("trust").innerHTML = S.trustPoints.map((t) => `<li>${esc(t)}</li>`).join("");
     $("payStrip").innerHTML = S.payments.map(chip).join("");

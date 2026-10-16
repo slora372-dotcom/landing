@@ -50,7 +50,7 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
 }
 .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; line-height: 1.05; }
-.logo img { height: min(50px, 12vw); width: auto; max-width: none; }
+.logo img { height: min(50px, 12vw); width: auto; max-width: none; aspect-ratio: 1080 / 351; }
 .logo strong {
   font-size: 22px;
   font-weight: 900;
@@ -62,7 +62,7 @@ img { display: block; max-width: 100%; }
 }
 .logo small { font-size: 11px; font-style: italic; color: #555; }
 .partner { text-align: center; line-height: 1.1; flex-shrink: 0; margin-left: auto; }
-.partner img { height: 48px; width: auto; }
+.partner img { height: 48px; width: auto; aspect-ratio: 1; }
 .partner strong { display: block; font-size: 13px; color: var(--gold); text-shadow: 0 1px 0 #7a5a00; }
 .partner small {
   display: inline-block;
@@ -124,9 +124,10 @@ img { display: block; max-width: 100%; }
 .slide-text h3 { font-size: clamp(18px, 5.5vw, 28px); font-weight: 900; line-height: 1.1; }
 .slide-text em { display: block; font-style: normal; font-size: clamp(26px, 8vw, 40px); font-weight: 900; }
 .slide-text p { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
-.carousel-dots { position: absolute; bottom: 8px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
-.carousel-dots button { width: 8px; height: 8px; border-radius: 50%; background: rgba(120, 130, 160, .5); }
-.carousel-dots button.active { background: var(--navy); }
+.carousel-dots { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 0; }
+/* Small dot, but a 24px tap area around it. */
+.carousel-dots button { width: 24px; height: 24px; padding: 8px; border-radius: 50%; background-color: rgba(120, 130, 160, .5); background-clip: content-box; }
+.carousel-dots button.active { background-color: var(--navy); }
 
 /* ---------- Trust + payments strip ---------- */
 .trust {
@@ -154,7 +155,7 @@ img { display: block; max-width: 100%; }
 }
 .trust[hidden] { display: none; }
 .pay-strip.has-img { border-radius: 0; box-shadow: none; padding: 6px 4px; background: radial-gradient(circle at 50% 40%, #33205e, #0d0a22); }
-.pay-strip.has-img img { width: 100%; height: auto; display: block; }
+.pay-strip.has-img img { width: 100%; height: auto; display: block; aspect-ratio: 1080 / 210; }
 .pay-strip .chip { width: 24px; height: 24px; font-size: 9px; border-radius: 6px; }
 
 /* ---------- Buttons ---------- */
@@ -221,7 +222,7 @@ img { display: block; max-width: 100%; }
 .referral-actions .btn { font-size: 13px; }
 .referral.has-img { position: relative; margin: 0; padding: 6px 0 10px; border-radius: 0; background: none; }
 .referral.has-img .referral-banner { background: none; border-radius: 0; overflow: visible; }
-.referral.has-img .referral-banner img { display: block; width: 100%; height: auto; }
+.referral.has-img .referral-banner img { display: block; width: 100%; height: auto; aspect-ratio: 1032 / 761; }
 .referral.has-img .referral-actions { position: absolute; left: 3%; right: 3%; top: 72%; gap: 6px; margin: 0; }
 
 /* ---------- Section blocks ---------- */
@@ -255,9 +256,13 @@ img { display: block; max-width: 100%; }
 .tab.has-img.active { opacity: 1; border-color: #ff3bd4; background: radial-gradient(circle at 50% 40%, #4a2a86, #150f33); box-shadow: 0 0 10px rgba(255, 59, 212, .7); }
 
 /* ---------- Game grid ---------- */
-.game-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0 12px; }
+.game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 8px; }
 .game { aspect-ratio: 3 / 4; border-radius: 8px; border: 2px solid #fff; outline: 1px solid rgba(11, 42, 122, .5); font-size: 40px; }
-.game.has-img { aspect-ratio: 1; background: #180e10; border-color: #2a1a4a; }
+/* Image tiles are transparent artwork: no box behind them. */
+.game.has-img { aspect-ratio: 1; background: none; border: 0; outline: 0; border-radius: 0; box-shadow: none; transition: transform .1s, filter .15s; }
+.game.has-img:hover { filter: brightness(1.15); }
+.game.has-img:active { transform: scale(.96); }
+.game.has-img img { object-fit: contain; }
 .game .side { position: absolute; left: 3px; top: 50%; writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg); font-size: 7px; font-weight: 800; color: #fff; letter-spacing: .5px; }
 .game .tag { position: absolute; top: 4px; right: 5px; font-size: 13px; color: #fff; text-shadow: 0 1px 2px #000; }
 .game .label { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 2px; background: hsl(var(--h) 80% 28%); color: #fff; font-size: 10px; font-weight: 800; text-align: center; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
