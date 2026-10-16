@@ -29,15 +29,17 @@
         <span></span><span></span><span></span>
       </a>
     </header>
-    <div class="marquee" aria-label="Announcement"><span id="marquee"></span></div>
+    <div class="marquee" aria-label="Announcement"><span id="marquee">Welcome to i1Malaysia. Faster withdrawals, smoother gameplay and a stronger online gaming experience.</span></div>
 
     <section class="carousel" aria-label="Promotions">
-      <div class="carousel-track" id="carouselTrack"></div>
+      <!-- First banner is written here (not only by script.js) so it appears
+           with the first paint and the page below it never jumps. -->
+      <div class="carousel-track" id="carouselTrack"><a class="slide has-img" href="https://ppg668.cam/register.php?r=BMMTH"><img src="assets/banners/banner-1.jpg" alt="50% Welcome Bonus, 20% Daily Bonus, 10% Unlimited Bonus" width="1000" height="500" fetchpriority="high"></a></div>
       <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
-    <ul class="trust" id="trust"></ul>
-    <div class="pay-strip" id="payStrip"></div>
+    <ul class="trust" id="trust" hidden></ul>
+    <div class="pay-strip has-img" id="payStrip"><img src="assets/static-banner.png" alt="Payment methods" width="1080" height="210"></div>
 
     <div class="account">
     <div class="auth-row">
@@ -48,9 +50,9 @@
     <section class="wallet">
       <div class="wallet-info">
         <p class="wallet-label">Balance:</p>
-        <p class="wallet-amount" id="balance"></p>
-        <p>Minimum Deposit: <b id="minDeposit"></b></p>
-        <p>Minimum Withdrawal: <b id="minWithdrawal"></b></p>
+        <p class="wallet-amount" id="balance">RM0.00</p>
+        <p>Minimum Deposit: <b id="minDeposit">RM1.00</b></p>
+        <p>Minimum Withdrawal: <b id="minWithdrawal">RM30.00</b></p>
       </div>
       <div class="wallet-actions">
         <a class="img-btn" data-link="deposit"><img src="assets/ui/btn-deposit.png" alt="Deposit" width="1000" height="278"></a>
@@ -60,8 +62,8 @@
     </section>
     </div>
 
-    <section class="referral" id="referral">
-      <div class="referral-banner" id="referralBanner"></div>
+    <section class="referral has-img" id="referral">
+      <div class="referral-banner has-img" id="referralBanner"><img src="assets/ui/referral-banner.png" alt="Every 1 share RM10, 5% commission" width="1032" height="761" loading="lazy"></div>
       <div class="referral-actions">
         <button class="img-btn" id="shareBtn"><img src="assets/ui/btn-share.png" alt="Share" width="800" height="160" loading="lazy"></button>
         <a class="img-btn" data-link="downlineChart"><img src="assets/ui/btn-downline.png" alt="Downline" width="800" height="160" loading="lazy"></a>
