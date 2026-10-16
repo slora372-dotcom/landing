@@ -14,12 +14,16 @@
   $("partner").innerHTML = S.brand.partner.img
     ? `<img src="${esc(S.brand.partner.img)}" alt="${esc(S.brand.partner.name)}">`
     : `<strong>${esc(S.brand.partner.name)}</strong><small>${esc(S.brand.partner.label)}</small>`;
-  // The animated badge is large, so swap it in only after the page has loaded.
+  // The animated badge is large (about 1 MB), so it loads when the visitor
+  // first scrolls or touches the page instead of competing with the banner.
   if (S.brand.partner.animated) {
-    window.addEventListener("load", () => {
+    const events = ["scroll", "touchstart", "pointerdown", "mousemove", "keydown"];
+    const animate = () => {
+      events.forEach((t) => window.removeEventListener(t, animate));
       const badge = $("partner").querySelector("img");
       if (badge) badge.src = S.brand.partner.animated;
-    });
+    };
+    events.forEach((t) => window.addEventListener(t, animate, { passive: true }));
   }
   $("marquee").textContent = S.announcement;
   $("footerNote").textContent = S.footerNote;
