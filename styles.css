@@ -278,10 +278,16 @@ img { display: block; max-width: 100%; }
 .seo details p { padding-bottom: 10px; }
 .seo ol, .seo ul { padding-left: 20px; }
 .seo li { margin-bottom: 6px; }
+.seo ul { list-style: disc; }
 .seo b { color: #fff; }
 .guide { margin-top: 14px; }
 .guide .crumbs { font-size: 12px; color: #a9a4c0; margin-bottom: 8px; }
 .guide .auth-row { padding: 18px 0 0; }
+.seo h3 { font-size: 15px; color: #fff; margin: 14px 0 4px; }
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+.seo table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.seo th { background: #6a2fb0; color: #fff; text-align: left; padding: 8px; }
+.seo td { padding: 8px; border: 1px solid #3a2a5e; vertical-align: top; }
 
 /* Long sections fold to a preview; collapse.js adds the toggle button. */
 .collapsible { position: relative; max-height: 320px; overflow: hidden; }
