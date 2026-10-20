@@ -337,3 +337,13 @@ img { display: block; max-width: 100%; }
   .marquee span { animation: none; }
   .marquee span { padding-left: 12px; }
 }
+
+/* ---------- Guide card grid ---------- */
+.guide-grid-wrap { margin-top: 22px; }
+.home-grid { margin: 26px 12px 0; }
+.guide-grid-title, .seo .guide-grid-title { margin: 0 0 12px; font-size: 19px; font-weight: 800; color: #f5c96a; }
+.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.guide-grid a { display: block; padding: 12px 14px; border: 1px solid #4a2f75; border-radius: 12px; background: #1d1033; text-decoration: none; transition: border-color .15s, background .15s; }
+.guide-grid a:hover { border-color: #b46bff; background: #26144a; }
+.guide-grid b { display: block; font-size: 15px; color: #fbe7b0; }
+.guide-grid span { display: block; margin-top: 4px; font-size: 12.5px; line-height: 1.35; color: #c9bfe0; }
